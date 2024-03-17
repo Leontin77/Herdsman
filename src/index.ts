@@ -18,7 +18,7 @@ function createAnimal(): Animal {
     const animal = new Animal();
     const animalPosition = {
         x: Math.random() * app.screen.width,
-        y: Math.random() * app.screen.height - 200
+        y: Math.random() * app.screen.height - 220
     };
     animal.x = animalPosition.x;
     animal.y = animalPosition.y;
@@ -90,8 +90,7 @@ const runGame = () => {
         const heroPosition = hero.view.position;
         let animalsInsideYard = 0;
         const animalGroup: any[] = [];
-        console.log('animalGroup', animalGroup.length);
-        animals.forEach(animal => {
+        animals.map(animal => {
             const animalPosition = animal.view.position;
             const distance = Math.sqrt(
                 Math.pow(animalPosition.x - heroPosition.x, 2) +
@@ -103,6 +102,9 @@ const runGame = () => {
                 animalPosition.y >= yardBounds.y &&
                 animalPosition.y <= yardBounds.y + yardBounds.height
             );
+            if (animal.counted) {
+                animalsInsideYard++;
+            } 
             const heroInYard = (
                 heroPosition.x >= yardBounds.x &&
                 heroPosition.x <= yardBounds.x + yardBounds.width &&
@@ -119,15 +121,13 @@ const runGame = () => {
                 const finalX = animalPosition.x + dx;
                 const finalY = animalPosition.y + dy;
 
-                gsap.to(animal.view, { x: finalX, y: finalY, duration: 3 });
-
+                gsap.to(animal.view, { x: finalX, y: finalY, duration: 3} );
             }
+            console.log('animalsInsideYard', animalsInsideYard);
             if (heroInYard && isInYard) {
-                animalsInsideYard++;
+                scoreboard.updateScore(animalsInsideYard);
             }
         });
-        console.log('Animals inside yard:', animalsInsideYard);
-        scoreboard.updateScore(animalsInsideYard);
     };
 
     app.ticker.add(checkAnimalProximity);

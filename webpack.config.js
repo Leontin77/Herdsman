@@ -16,7 +16,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'assets/', // Директорія, куди будуть копіюватись зображення у вихідній папці
+              outputPath: 'assets/',
             },
           },
         ],

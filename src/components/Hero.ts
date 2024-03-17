@@ -17,7 +17,7 @@ export class Hero {
 
         this._mainHero = new AnimatedSprite(textures);
         this._mainHero.animationSpeed = 0.25;
-        this._mainHero.anchor.set(0.5); // центруємо спрайт
+        this._mainHero.anchor.set(0.5);
         this._mainHero.play();
 
         this._view.addChild(this._mainHero as DisplayObject);

@@ -22,7 +22,7 @@ export class Animal {
 
         this._animal = new AnimatedSprite(textures);
         this._animal.animationSpeed = 0.1;
-        this._animal.anchor.set(0.5); // центруємо спрайт
+        this._animal.anchor.set(0.5);
         this._animal.play();
 
         this._view.addChild(this._animal as DisplayObject);
@@ -54,10 +54,4 @@ export class Animal {
     set counted(value: boolean) {
         this._counted = value;
     }
-
-    // moveAnimal(): void {
-    //     // const texture = Texture.from('animal3');
-    //     // this._animal.textures = texture as any
-    //     console.log('1');
-    // }
 }
