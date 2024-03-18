@@ -6,8 +6,6 @@ In the project directory, you can run:
 
 To upload node modules
 
-#### `Install Live server extension`
-
-#### `Press "Go Live" button`
+#### `npm start`
 
 Runs the app in the development mode.
